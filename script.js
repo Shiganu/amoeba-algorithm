@@ -1,7 +1,12 @@
 
+let circleSize = 8;
+
 // For generating algorithm points close to each other
-let triCenter = new Vec2(random(0, width), random(0, height));
 let triMaxDist = 200;
+let triCenter = new Vec2(
+	random(triMaxDist+circleSize, width-triMaxDist-circleSize),
+	random(triMaxDist+circleSize, height-triMaxDist-circleSize)
+);
 
 // Algorithm points
 let v1 = new Vec2(
@@ -18,7 +23,10 @@ let v3 = new Vec2(
 );
 
 // Target point
-let t = new Vec2(random(0, width), random(0, height));
+let t = new Vec2(
+	random(circleSize, width-circleSize),
+	random(circleSize, height-circleSize)
+);
 
 // Calculating distances
 let v1dist = dist(v1, t);
