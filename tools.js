@@ -1,16 +1,16 @@
-function s(e)  { return String(e);   }
-function px(n) { return	s(n) + "px"; }
 
 let cvs = document.getElementById("cvs"),
 	c = cvs.getContext("2d"),
 	width = window.innerWidth,
 	height = window.innerHeight;
 
-cvs.width = s(width);
-cvs.height = s(height);
-cvs.style.width = px(width);
-cvs.style.height = px(height);
+// Setting up the canvas
+cvs.width = String(width);
+cvs.height = String(height);
+cvs.style.width = String(width) + "px";
+cvs.style.height = String(height) + "px";
 
+// Draws a line
 function line(x1, y1, x2, y2)
 {
 	c.beginPath();
@@ -19,6 +19,7 @@ function line(x1, y1, x2, y2)
 	c.stroke();
 }
 
+// Fills a circle
 function fillCircle(x, y, r)
 {
 	c.beginPath();
@@ -26,6 +27,7 @@ function fillCircle(x, y, r)
 	c.fill();
 }
 
+// Draws a circle
 function strokeCircle(x, y, r)
 {
 	c.beginPath();
@@ -33,16 +35,11 @@ function strokeCircle(x, y, r)
 	c.stroke();
 }
 
-function sqrt(n)
-{
-	return Math.sqrt(n);
-}
+// Useful functions
+function sqrt(n) { return Math.sqrt(n); }
+function random(min, max) { return min+(Math.random()*(max-min)); }
 
-function random(min, max)
-{
-	return min+(Math.random()*(max-min));
-}
-
+// Distance function
 function dist()
 {
 	if(arguments.length == 2)
@@ -73,6 +70,7 @@ function max(a, b)
 	else      return b;
 }
 
+// 2D Vector class
 class Vec2
 {
 	constructor(x, y)
@@ -106,6 +104,6 @@ class Vec2
 
 	normalize()
 	{
-		this.mult(1/this.magnitude());
+		this.mult(1 / this.magnitude());
 	}
 }
