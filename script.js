@@ -32,44 +32,20 @@ let w, b, o;
 if(v1dist < v2dist && v1dist < v3dist)
 {
 	b = v1;
-	if(v2dist < v3dist)
-	{
-		o = v2;
-		w = v3;
-	}
-	else
-	{
-		o = v3;
-		w = v2;
-	}
+	if(v2dist < v3dist) { o = v2; w = v3; }
+	else { o = v3; w = v2; }
 }
 else if(v2dist < v1dist && v2dist < v3dist)
 {
 	b = v2;
-	if(v1dist < v3dist)
-	{
-		o = v1;
-		w = v3;
-	}
-	else
-	{
-		o = v3;
-		w = v1;
-	}
+	if(v1dist < v3dist) { o = v1; w = v3; }
+	else { o = v3; w = v1; }
 }
 else
 {
 	b = v3;
-	if(v1dist < v2dist)
-	{
-		o = v1;
-		w = v2;
-	}
-	else
-	{
-		o = v2;
-		w = v1;
-	}
+	if(v1dist < v2dist) { o = v1; w = v2; }
+	else { o = v2; w = v1; }
 }
 
 function main()
