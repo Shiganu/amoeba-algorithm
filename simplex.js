@@ -93,11 +93,11 @@ class Simplex
 		return e;
 	}
 
-	shrink()
+	shrink(target)
 	{
-		let w = this.worst();
-		let b = this.best();
-		let o = this.other();
+		let w = this.worst(target);
+		let b = this.best(target);
+		let o = this.other(target);
 
 		let dw = b.get();
 		dw.sub(w);
