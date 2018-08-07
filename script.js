@@ -13,9 +13,9 @@ function main()
 	c.fillStyle = "#000000";
 	c.fillRect(0, 0, width, height);
 
-	let w = s.worst();
-	let b = s.best();
-	let o = s.other();
+	let w = s.worst(t);
+	let b = s.best(t);
+	let o = s.other(t);
 
 	// Color the points
 	c.fillStyle = "#ff0000";
