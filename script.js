@@ -1,6 +1,6 @@
 
 // Target point
-let t = new Vec2(
+target = new Vec2(
 	random(0, width),
 	random(0, height)
 );
@@ -13,9 +13,9 @@ function main()
 	c.fillStyle = "#000000";
 	c.fillRect(0, 0, width, height);
 
-	let w = s.worst(t);
-	let b = s.best(t);
-	let o = s.other(t);
+	let w = s.worst();
+	let b = s.best();
+	let o = s.other();
 
 	// Draw the simplex
 	c.strokeStyle = "#ffffff";
@@ -31,9 +31,11 @@ function main()
 	c.fillStyle = "#00ff00";
 	fillCircle(b.x, b.y, 8);
 	c.fillStyle = "#ffffff";
-	fillCircle(t.x, t.y, 8);
+	fillCircle(target.x, target.y, 8);
+
+	s.next();
 }
 
 // Main loop
-//let loop = setInterval(main, 1000/10);
-main();
+let loop = setInterval(main, 1000/10);
+//main();

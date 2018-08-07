@@ -1,4 +1,6 @@
 
+let target;
+
 let cvs = document.getElementById("cvs"),
 	c = cvs.getContext("2d"),
 	width = window.innerWidth,
@@ -32,22 +34,12 @@ function sqrt(n) { return Math.sqrt(n); }
 function random(min, max) { return min+(Math.random()*(max-min)); }
 
 // Distance function
-function dist()
+function dist(v1, v2)
 {
-	if(arguments.length == 2)
-	{
-		let dx = arguments[0].x - arguments[1].x;
-		let dy = arguments[0].y - arguments[1].y;
+	let dx = v1.x - v2.x;
+	let dy = v1.y - v2.y;
 
-		return sqrt(dx*dx + dy*dy);
-	}
-	else if(arguments.length == 4)
-	{
-		let dx = arguments[0] - arguments[2];
-		let dy = arguments[1] - arguments[3];
-
-		return sqrt(dx*dx + dy*dy);
-	}
+	return sqrt(dx*dx + dy*dy);
 }
 
 // 2D Vector class

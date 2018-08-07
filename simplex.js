@@ -8,37 +8,37 @@ class Simplex
 		this.v3 = new Vec2(random(0, width), random(0, height));
 	}
 
-	best(target)
+	best()
 	{
 		let d1 = dist(this.v1, target);
 		let d2 = dist(this.v2, target);
 		let d3 = dist(this.v3, target);
 
-		if(d1 < d2 && d1 < d3) return this.v1;
-		if(d2 < d1 && d2 < d3) return this.v2;
-		if(d3 < d1 && d3 < d2) return this.v3;
+		if(d1 < d2 && d1 < d3) return this.v1.get();
+		if(d2 < d1 && d2 < d3) return this.v2.get();
+		if(d3 < d1 && d3 < d2) return this.v3.get();
 	}
 
-	worst(target)
+	worst()
 	{
 		let d1 = dist(this.v1, target);
 		let d2 = dist(this.v2, target);
 		let d3 = dist(this.v3, target);
 
-		if(d1 > d2 && d1 > d3) return this.v1;
-		if(d2 > d1 && d2 > d3) return this.v2;
-		if(d3 > d1 && d3 > d2) return this.v3;
+		if(d1 > d2 && d1 > d3) return this.v1.get();
+		if(d2 > d1 && d2 > d3) return this.v2.get();
+		if(d3 > d1 && d3 > d2) return this.v3.get();
 	}
 
-	other(target)
+	other()
 	{
 		let d1 = dist(this.v1, target);
 		let d2 = dist(this.v2, target);
 		let d3 = dist(this.v3, target);
 
-		if((d1 > d2 && d1 < d3) || (d1 < d2 && d1 > d3)) return this.v1;
-		if((d2 > d1 && d2 < d3) || (d2 < d1 && d2 > d3)) return this.v2;
-		if((d3 > d2 && d3 < d1) || (d3 < d2 && d3 > d1)) return this.v3;
+		if((d1 > d2 && d1 < d3) || (d1 < d2 && d1 > d3)) return this.v1.get();
+		if((d2 > d1 && d2 < d3) || (d2 < d1 && d2 > d3)) return this.v2.get();
+		if((d3 > d2 && d3 < d1) || (d3 < d2 && d3 > d1)) return this.v3.get();
 	}
 
 	centroid()
@@ -93,11 +93,11 @@ class Simplex
 		return e;
 	}
 
-	shrink(target)
+	shrink()
 	{
-		let w = this.worst(target);
-		let b = this.best(target);
-		let o = this.other(target);
+		let w = this.worst();
+		let b = this.best();
+		let o = this.other();
 
 		let dw = b.get();
 		dw.sub(w);
@@ -112,5 +112,31 @@ class Simplex
 		this.v1 = b;
 		this.v2 = o;
 		this.v3 = w;
+	}
+
+	replaceWorst(newWorst)
+	{
+		if(dist(this.v1, target) < dist(this.v2, target)
+		&& dist(this.v1, target) < dist(this.v3, target)) this.v1 = newWorst;
+		if(dist(this.v2, target) < dist(this.v1, target)
+		&& dist(this.v2, target) < dist(this.v3, target)) this.v2 = newWorst;
+		if(dist(this.v3, target) < dist(this.v1, target)
+		&& dist(this.v3, target) < dist(this.v2, target)) this.v3 = newWorst;
+	}
+
+	next()
+	{
+		let c = this.centroid();
+
+		let e = this.expanded();
+		if(dist(e, target) < dist(this.worst(), target)) this.replaceWorst(e);
+
+		let r = this.reflected();
+		if(dist(r, target) < dist(this.worst(), target)) this.replaceWorst(r);
+
+		let co = this.contracted();
+		if(dist(co, target) < dist(this.worst(), target)) this.replaceWorst(co);
+
+		this.shrink();
 	}
 }
