@@ -27,14 +27,6 @@ function fillCircle(x, y, r)
 	c.fill();
 }
 
-// Draws a circle
-function strokeCircle(x, y, r)
-{
-	c.beginPath();
-	c.arc(x, y, r, -Math.PI, Math.PI);
-	c.stroke();
-}
-
 // Useful functions
 function sqrt(n) { return Math.sqrt(n); }
 function random(min, max) { return min+(Math.random()*(max-min)); }
