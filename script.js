@@ -1,27 +1,4 @@
 
-let circleSize = 8;
-
-// For generating algorithm points close to each other
-let triMaxDist = 200;
-let triCenter = new Vec2(
-	random(triMaxDist+circleSize, width-triMaxDist-circleSize),
-	random(triMaxDist+circleSize, height-triMaxDist-circleSize)
-);
-
-// Algorithm points
-let v1 = new Vec2(
-	triCenter.x + random(0, triMaxDist),
-	triCenter.y + random(0, triMaxDist)
-);
-let v2 = new Vec2(
-	triCenter.x + random(0, triMaxDist),
-	triCenter.y + random(0, triMaxDist)
-);
-let v3 = new Vec2(
-	triCenter.x + random(0, triMaxDist),
-	triCenter.y + random(0, triMaxDist)
-);
-
 // Target point
 let t = new Vec2(
 	random(circleSize, width-circleSize),
@@ -62,6 +39,22 @@ function main()
 	c.fillStyle = "#000000";
 	c.fillRect(0, 0, width, height);
 
+	// Draw the algorithm triangle
+	c.strokeStyle = "#ffffff";
+	line(w.x, w.y, o.x, o.y);
+	line(w.x, w.y, b.x, b.y);
+	line(b.x, b.y, o.x, o.y);
+
+	// Color the points
+	c.fillStyle = "#ff0000";
+	fillCircle(w.x, w.y, 8);
+	c.fillStyle = "#ffff00";
+	fillCircle(o.x, o.y, 8);
+	c.fillStyle = "#00ff00";
+	fillCircle(b.x, b.y, 8);
+	c.fillStyle = "#ffffff";
+	fillCircle(t.x, t.y, 8);
+
 	// Algorithm start
 
 	// Calculating centroid
@@ -70,14 +63,12 @@ function main()
 	centroid.mult(0.5);
 	centroid.add(b);
 
-	// Calculating expanded
-	let expanded = centroid.get();
-	expanded.sub(w);
-	expanded.mult(2);
-	expanded.add(w);
-
 	c.fillStyle = "#ffffff";
 	fillCircle(expanded.x, expanded.y, 8);
+	c.fillStyle = "#ffffff";
+	fillCircle(reflected.x, reflected.y, 8);
+	c.fillStyle = "#ffffff";
+	fillCircle(contracted.x, contracted.y, 8);
 
 	// New points
 	let v1 = o;
@@ -110,23 +101,8 @@ function main()
 	}
 
 	// Algorithm end
-
-	// Draw the algorithm triangle
-	c.strokeStyle = "#ffffff";
-	line(w.x, w.y, o.x, o.y);
-	line(w.x, w.y, b.x, b.y);
-	line(b.x, b.y, o.x, o.y);
-
-	// Color the points
-	c.fillStyle = "#ff0000";
-	fillCircle(w.x, w.y, 8);
-	c.fillStyle = "#ffff00";
-	fillCircle(o.x, o.y, 8);
-	c.fillStyle = "#00ff00";
-	fillCircle(b.x, b.y, 8);
-	c.fillStyle = "#ffffff";
-	fillCircle(t.x, t.y, 8);
 }
 
 // Main loop
-let loop = setInterval(main, 1000/10);
+//let loop = setInterval(main, 1000/10);
+main();
