@@ -17,6 +17,12 @@ function main()
 	let b = s.best(t);
 	let o = s.other(t);
 
+	// Draw the simplex
+	c.strokeStyle = "#ffffff";
+	line(w.x, w.y, o.x, o.y);
+	line(o.x, o.y, b.x, b.y);
+	line(b.x, b.y, w.x, w.y);
+
 	// Color the points
 	c.fillStyle = "#ff0000";
 	fillCircle(w.x, w.y, 8);
