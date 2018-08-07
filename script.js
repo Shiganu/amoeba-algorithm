@@ -1,37 +1,11 @@
 
 // Target point
 let t = new Vec2(
-	random(circleSize, width-circleSize),
-	random(circleSize, height-circleSize)
+	random(0, width),
+	random(0, height)
 );
 
-// Calculating distances
-let v1dist = dist(v1, t);
-let v2dist = dist(v2, t);
-let v3dist = dist(v3, t);
-
-// Worst, best and other initialization
-let w, b, o;
-
-// Checking which vector is the best, worst and other
-if(v1dist < v2dist && v1dist < v3dist)
-{
-	b = v1;
-	if(v2dist < v3dist) { o = v2; w = v3; }
-	else                { o = v3; w = v2; }
-}
-else if(v2dist < v1dist && v2dist < v3dist)
-{
-	b = v2;
-	if(v1dist < v3dist) { o = v1; w = v3; }
-	else                { o = v3; w = v1; }
-}
-else
-{
-	b = v3;
-	if(v1dist < v2dist) { o = v1; w = v2; }
-	else                { o = v2; w = v1; }
-}
+let s = new Simplex();
 
 function main()
 {
@@ -39,11 +13,9 @@ function main()
 	c.fillStyle = "#000000";
 	c.fillRect(0, 0, width, height);
 
-	// Draw the algorithm triangle
-	c.strokeStyle = "#ffffff";
-	line(w.x, w.y, o.x, o.y);
-	line(w.x, w.y, b.x, b.y);
-	line(b.x, b.y, o.x, o.y);
+	let w = s.worst();
+	let b = s.best();
+	let o = s.other();
 
 	// Color the points
 	c.fillStyle = "#ff0000";
@@ -54,53 +26,6 @@ function main()
 	fillCircle(b.x, b.y, 8);
 	c.fillStyle = "#ffffff";
 	fillCircle(t.x, t.y, 8);
-
-	// Algorithm start
-
-	// Calculating centroid
-	let centroid = o.get();
-	centroid.sub(b);
-	centroid.mult(0.5);
-	centroid.add(b);
-
-	c.fillStyle = "#ffffff";
-	fillCircle(expanded.x, expanded.y, 8);
-	c.fillStyle = "#ffffff";
-	fillCircle(reflected.x, reflected.y, 8);
-	c.fillStyle = "#ffffff";
-	fillCircle(contracted.x, contracted.y, 8);
-
-	// New points
-	let v1 = o;
-	let v2 = b;
-	let v3 = expanded;
-
-	// Calculating distances
-	let v1dist = dist(v1, t);
-	let v2dist = dist(v2, t);
-	let v3dist = dist(v3, t);
-
-	// Checking which vector is the best, worst and other
-	if(v1dist < v2dist && v1dist < v3dist)
-	{
-		b = v1;
-		if(v2dist < v3dist) { o = v2; w = v3; }
-		else                { o = v3; w = v2; }
-	}
-	else if(v2dist < v1dist && v2dist < v3dist)
-	{
-		b = v2;
-		if(v1dist < v3dist) { o = v1; w = v3; }
-		else                { o = v3; w = v1; }
-	}
-	else
-	{
-		b = v3;
-		if(v1dist < v2dist) { o = v1; w = v2; }
-		else                { o = v2; w = v1; }
-	}
-
-	// Algorithm end
 }
 
 // Main loop
