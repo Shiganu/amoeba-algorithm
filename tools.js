@@ -76,4 +76,9 @@ class Vec2
 		this.x *= n;
 		this.y *= n;
 	}
+
+	get()
+	{
+		return new Vec2(this.x, this.y);
+	}
 }
