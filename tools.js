@@ -58,18 +58,6 @@ function dist()
 	}
 }
 
-function min(a, b)
-{
-	if(a < b) return a;
-	else      return b;
-}
-
-function max(a, b)
-{
-	if(a > b) return a;
-	else      return b;
-}
-
 // 2D Vector class
 class Vec2
 {
@@ -95,15 +83,5 @@ class Vec2
 	{
 		this.x *= n;
 		this.y *= n;
-	}
-
-	magnitude()
-	{
-		return sqrt(this.x*this.x + this.y*this.y);
-	}
-
-	normalize()
-	{
-		this.mult(1 / this.magnitude());
 	}
 }
