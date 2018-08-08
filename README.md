@@ -26,11 +26,7 @@ while not done loop
 end loop
 return best solution found
 ```
-## Authors:
-Dareka826 --> https://github.com/Dareka826
-& SamuraiNeo --> https://github.com/SamuraiNeo
 
 ### Sources:
-https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
 https://www.youtube.com/watch?v=bVDX_UwthZI
 https://msdn.microsoft.com/en-us/magazine/dn201752.aspx
