@@ -1,6 +1,4 @@
 
-let target;
-
 let cvs = document.getElementById("cvs"),
 	c = cvs.getContext("2d"),
 	width = window.innerWidth,
