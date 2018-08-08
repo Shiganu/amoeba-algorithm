@@ -1,7 +1,7 @@
-#Amoeba method optimization
-##What it does?
+# Amoeba method optimization
+## What it does?
 Amoeba by the three points captures the target placed randomly on the canvas. It uses simple algorithm known else as a "Nelder-Mead method".
-##Pseudocode:
+## Pseudocode:
 ```
 generate amoebaSize random solutions
 while not done loop
@@ -26,11 +26,11 @@ while not done loop
 end loop
 return best solution found
 ```
-##Authors:
+## Authors:
 Dareka826 --> https://github.com/Dareka826
 & SamuraiNeo --> https://github.com/SamuraiNeo
 
-###Sources:
+### Sources:
 https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method
 https://www.youtube.com/watch?v=bVDX_UwthZI
 https://msdn.microsoft.com/en-us/magazine/dn201752.aspx
