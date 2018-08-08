@@ -3,9 +3,12 @@
 let target = new Vec2(random(0, width), random(0, height));
 function td(v) { return dist(v, target); }
 
-let v1 = new Vec2(random(0, width), random(0, height));
-let v2 = new Vec2(random(0, width), random(0, height));
-let v3 = new Vec2(random(0, width), random(0, height));
+let tc = new Vec2(random(0, width), random(0, height));
+let tr = 200;
+
+let v1 = new Vec2(tc.x + cos(Math.PI*2/3) * tr, tc.y + sin(Math.PI*2/3) * tr);
+let v2 = new Vec2(tc.x + cos(Math.PI*4/3) * tr, tc.y + sin(Math.PI*4/3) * tr);
+let v3 = new Vec2(tc.x + cos(Math.PI*2) * tr, tc.y + sin(Math.PI*2) * tr);
 let d1 = td(v1), d2 = td(v2), d3 = td(v3);
 
 let w, o, b;
