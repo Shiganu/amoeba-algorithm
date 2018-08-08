@@ -28,5 +28,5 @@ return best solution found
 ```
 
 ### Sources:
-https://www.youtube.com/watch?v=bVDX_UwthZI
-https://msdn.microsoft.com/en-us/magazine/dn201752.aspx
+- https://www.youtube.com/watch?v=bVDX_UwthZI
+- https://msdn.microsoft.com/en-us/magazine/dn201752.aspx
